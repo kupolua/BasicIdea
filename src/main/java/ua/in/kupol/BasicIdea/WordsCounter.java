@@ -16,8 +16,6 @@ public class WordsCounter {
 
         String textSource = convertedSource.replaceAll("[^aA-zZ ’]", " ");
 
-//        logger.info("Text after regex, before split(space) :  " + textSource);
-
         List<String> wordsList = new ArrayList<String>(Arrays.asList(textSource.split(" ")));
         Map<String, Integer> words = new HashMap<String, Integer>();
         int countWord;
@@ -30,14 +28,12 @@ public class WordsCounter {
             }
         }
         Map<String, Integer> wordsSortByFound = sortByComparator(words);
-//        logger.info("List words: " + wordsSortByFound);
         return wordsSortByFound;
     }
     private static Map sortByComparator(Map unsortMap) {
 
         List list = new LinkedList(unsortMap.entrySet());
 
-        // sort list based on comparator
         Collections.sort(list, new Comparator() {
             public int compare(Object o1, Object o2) {
                 return ((Comparable) ((Map.Entry) (o2)).getValue())
@@ -45,8 +41,6 @@ public class WordsCounter {
             }
         });
 
-        // put sorted list into map again
-        //LinkedHashMap make sure order in which keys were inserted
         Map sortedMap = new LinkedHashMap();
         for (Iterator it = list.iterator(); it.hasNext();) {
             Map.Entry entry = (Map.Entry) it.next();
