@@ -10,10 +10,12 @@ import java.io.IOException;
 public class Main {
     static Logger logger = Logger.getRootLogger();
     public static final String PROPERTIES_FILE  = "config.properties";
+    public static final String SOURCES = "sources";
+
     public static void main(String[] args) throws IOException {
         logger.info("Run programm BasicIdea");
 
         Executor executor = new Executor();
-        logger.info("Result read source : " + executor.sourceReader("/Users/pavelkulakovsky/DevTeam/BasicIdea/src/main/resources/metro.txt").toString() + " : ");
+        logger.info("Result read source : " + executor.sourceReader(SOURCES).toString());
     }
 }
