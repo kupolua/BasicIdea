@@ -17,6 +17,5 @@ public class Main {
 
         Executor executor = new Executor();
         executor.sourceReader("http://en.wikipedia.org/wiki/Scott_Joplin");
-        executor.sourceReader("http://en.wikipedia.org/wiki/Scott_Joplin");
     }
 }
