@@ -17,25 +17,25 @@ public class Executor {
         PropertiesReader propertiesReader = new PropertiesReader();
         ConvertFactory convertFactory = new ConvertFactory();
         WordsCounter wordsCounter = new WordsCounter();
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> listSourcesLinks = new ArrayList<String>();
 
-        Scanner s = null;
+        Scanner cannerSourcesLinks = null;
         try {
-            s = new Scanner(new File(propertiesReader.pathToFile() + sources));
+            cannerSourcesLinks = new Scanner(new File(propertiesReader.pathToFile() + sources));
             String src = new String();
-            while (s.hasNext()) {
-                src = s.next();
-                list.add(wordsCounter.wordsCounter(convertFactory.getConverter(src)).toString() + "\n");
+            while (cannerSourcesLinks.hasNext()) {
+                src = cannerSourcesLinks.next();
+                listSourcesLinks.add(wordsCounter.wordsCounter(convertFactory.getConverter(src)) + "\n");
             }
-            return list;
+            return listSourcesLinks;
         } catch (IOException e) {
             logger.error("No sources file found " + sources, e);
         } finally {
-            if (s != null) {
-                s.close();
+            if (cannerSourcesLinks != null) {
+                cannerSourcesLinks.close();
             }
         }
 
-        return list;
+        return listSourcesLinks;
     }
 }
