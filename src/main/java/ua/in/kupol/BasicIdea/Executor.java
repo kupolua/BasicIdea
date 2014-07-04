@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 /**
  * Created by kpl on 03.07.2014.
+ *
  */
 public class Executor {
     static Logger logger = Logger.getLogger(PropertiesReader.class);
