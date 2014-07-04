@@ -20,7 +20,8 @@ public class TextFileToWordsStringConverter implements Converter{
         String noTextSourceFile = "No Source File";
 
         try {
-            byte[] textSources = Files.readAllBytes(Paths.get(propertiesReader.pathToFile() + source));
+//            byte[] textSources = Files.readAllBytes(Paths.get(propertiesReader.pathToFile() + source));
+            byte[] textSources = Files.readAllBytes(Paths.get(source));
             return new String(textSources);
         } catch (IOException ex) {
             logger.error("Sorry, unable to find " + Main.PROPERTIES_FILE, ex);

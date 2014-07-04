@@ -20,7 +20,6 @@ public class HTMLToWordsStringConverter implements Converter{
         try {
             Document HTMLDoc = Jsoup.connect(source).get();
             plainText = new HtmlToPlainText().getPlainText(Jsoup.parse(String.valueOf(HTMLDoc)));
-            System.out.println(plainText.replaceAll(propertiesReader.getReGex(), ""));
         } catch (IOException urlReadError) {
             logger.error("Can't read url:" + source, urlReadError);
         }

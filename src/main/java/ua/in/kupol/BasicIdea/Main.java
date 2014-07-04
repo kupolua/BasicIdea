@@ -12,10 +12,8 @@ public class Main {
     public static final String PROPERTIES_FILE  = "config.properties";
     public static void main(String[] args) throws IOException {
         logger.info("Run programm BasicIdea");
-        PropertiesReader propertiesReader = new PropertiesReader();
-        logger.info(propertiesReader.getReGex());
 
         Executor executor = new Executor();
-        executor.sourceReader("http://en.wikipedia.org/wiki/Scott_Joplin");
+        logger.info("Result read source : " + executor.sourceReader("/Users/pavelkulakovsky/DevTeam/BasicIdea/src/main/resources/metro.txt").toString() + " : ");
     }
 }
