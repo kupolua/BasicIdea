@@ -3,18 +3,29 @@ package ua.in.kupol.BasicIdea;
 import org.apache.log4j.Logger;
 
 import java.util.*;
+import java.util.concurrent.Callable;
 
 /**
  * Created by pavelkulakovsky on 04.07.14.
  */
-public class WordsCounter {
+public class WordsCounter implements Callable {
     static Logger logger = Logger.getLogger(WordsCounter.class);
+    public String getText = new String();
+    public WordsCounter(String sourceGetText) {
+       getText = sourceGetText;
+    }
+
+    @Override
+    public Object call() throws Exception {
+        return wordsCounter(this.getText);
+    }
 
     public Map wordsCounter(String convertedSource) {
 
         logger.info("Start WordsCounter programm");
 
         String textSource = convertedSource.replaceAll("[^aA-zZ ’]", " ");
+        logger.info("Text after ReGex " + textSource);
 
         List<String> wordsList = new ArrayList<String>(Arrays.asList(textSource.split(" ")));
         Map<String, Integer> words = new HashMap<String, Integer>();

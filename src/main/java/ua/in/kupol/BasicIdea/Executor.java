@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 /**
  * Created by kpl on 03.07.2014.
- *
  */
 public class Executor {
     static Logger logger = Logger.getLogger(PropertiesReader.class);
@@ -17,8 +16,10 @@ public class Executor {
     public ArrayList<String> sourceReader(String sources) {
         PropertiesReader propertiesReader = new PropertiesReader();
         ConvertFactory convertFactory = new ConvertFactory();
-        WordsCounter wordsCounter = new WordsCounter();
         ArrayList<String> listSourcesLinks = new ArrayList<String>();
+        String sourceGetText = new String();
+
+        ThreadPool threadPool = new ThreadPool(3, 3);
 
         Scanner cannerSourcesLinks = null;
         try {
@@ -26,11 +27,16 @@ public class Executor {
             String src = new String();
             while (cannerSourcesLinks.hasNext()) {
                 src = cannerSourcesLinks.next();
-                listSourcesLinks.add(wordsCounter.wordsCounter(convertFactory.getConverter(src)) + "\n");
+                sourceGetText = convertFactory.getConverter(src);
+                threadPool.execute(new WordsCounter(sourceGetText));
+//                listSourcesLinks.add(wordsCounter.wordsCounter(convertFactory.getConverter(src)) + "\n");
             }
+            threadPool.stop();
             return listSourcesLinks;
         } catch (IOException e) {
             logger.error("No sources file found " + sources, e);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             if (cannerSourcesLinks != null) {
                 cannerSourcesLinks.close();
@@ -39,4 +45,5 @@ public class Executor {
 
         return listSourcesLinks;
     }
+
 }
