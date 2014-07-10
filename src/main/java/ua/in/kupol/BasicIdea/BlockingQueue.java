@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class BlockingQueue {
     private List queue = new LinkedList();
-    private int  limit = 10;
+    private int  limit = 5;
 
     public BlockingQueue(int limit){
         this.limit = limit;
@@ -30,6 +30,7 @@ public class BlockingQueue {
     public synchronized Object dequeue()
             throws InterruptedException{
         while(this.queue.size() == 0){
+//            System.out.println("WAIT");
             wait();
         }
         if(this.queue.size() == this.limit){

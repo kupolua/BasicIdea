@@ -12,7 +12,7 @@ public class Main {
     public static final String PROPERTIES_FILE  = "config.properties";
     public static final String SOURCES = "sources";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         logger.info("Run programm BasicIdea");
 
         Executor executor = new Executor();

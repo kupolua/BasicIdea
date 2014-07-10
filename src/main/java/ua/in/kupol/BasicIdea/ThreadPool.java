@@ -12,7 +12,7 @@ public class ThreadPool {
     private List<PoolThread> threads = new ArrayList<PoolThread>();
     private boolean isStopped = false;
 
-    public ThreadPool(int noOfThreads, int maxNoOfTasks){
+    public ThreadPool(int noOfThreads, int maxNoOfTasks) throws InterruptedException {
         taskQueue = new BlockingQueue(maxNoOfTasks);
 
         for(int i=0; i<noOfThreads; i++){

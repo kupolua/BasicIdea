@@ -18,6 +18,7 @@ public class PoolThread extends Thread {
             try{
                 Callable callable = (Callable) taskQueue.dequeue();
                 callable.call();
+
             } catch(Exception e){
                 //log or otherwise report exception,
                 //but keep pool thread alive.

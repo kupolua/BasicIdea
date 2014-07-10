@@ -22,13 +22,13 @@ public class TextFileToWordsStringConverter implements Converter{
             byte[] textSources = Files.readAllBytes(Paths.get(source));
             return new String(textSources);
         } catch (IOException ex) {
-            logger.error("Sorry, unable to find " + Main.PROPERTIES_FILE, ex);
+            logger.error("Sorry, unable to find " + source, ex);
         } finally{
             if(input!=null){
                 try {
                     input.close();
                 } catch (IOException e) {
-                    logger.error("Sorry, can't close file" + Main.PROPERTIES_FILE, e);
+                    logger.error("Sorry, can't close file" + source, e);
                 }
             }
         }

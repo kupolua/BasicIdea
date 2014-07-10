@@ -25,7 +25,6 @@ public class WordsCounter implements Callable {
         logger.info("Start WordsCounter programm");
 
         String textSource = convertedSource.replaceAll("[^aA-zZ ’]", " ");
-        logger.info("Text after ReGex " + textSource);
 
         List<String> wordsList = new ArrayList<String>(Arrays.asList(textSource.split(" ")));
         Map<String, Integer> words = new HashMap<String, Integer>();
@@ -39,6 +38,7 @@ public class WordsCounter implements Callable {
             }
         }
         Map<String, Integer> wordsSortByFound = sortByComparator(words);
+        logger.info("Counted words " + wordsSortByFound.toString());
         return wordsSortByFound;
     }
     private static Map sortByComparator(Map unsortMap) {
